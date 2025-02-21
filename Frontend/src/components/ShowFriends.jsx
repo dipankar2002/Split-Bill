@@ -31,6 +31,12 @@ function FriendsLists({friend, onSelection, selectedFriend, darkMode}) {
         src={friend.image}
         alt={friend.name}
       />
+      {/* This code is for text DP of their name */}
+      {/* <div className={`${darkMode?`bg-black`:`${isSelect?`bg-white`:`bg-[#fff4e6]`}`} my-1 w-15 h-15 pt-3 rounded-4xl text-3xl font-bold text-center`}
+        src={friend.image}
+        alt={friend.name}
+      >{(friend.name).toUpperCase().slice(0,2)}</div> */}
+
       <div className=''>
         <p className='text-xl font-bold'>{friend.name}</p>
         <p className={`${friend.balance!=0?friend.balance>0?`text-green-600`:`text-red-600`:null}`}>{friend.balance==0?`You and ${friend.name} is even`:friend.balance>0?`${friend.name} owes you ₹${friend.balance}`:`You owe ${friend.name} ₹${ Math.abs(friend.balance)}`}</p>
