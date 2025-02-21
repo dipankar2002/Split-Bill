@@ -30,6 +30,20 @@ function App() {
   const [showAddFriend, setShowAddFriend] = useState(false);
   const [selectedFriend, setSelectedFriend] = useState(null);
 
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
   useEffect(() => {
     try {
       const storedList = JSON.parse(localStorage.getItem("list")) || [];
@@ -84,16 +98,32 @@ function App() {
 
   return (
     <div >
-      <Navbar showAddFriend={showAddFriend} addFriendCompo={addFriendCompo}/>
+      <Navbar 
+        showAddFriend={showAddFriend} 
+        addFriendCompo={addFriendCompo}
+        darkMode={darkMode} 
+        setDarkMode={setDarkMode}
+      />
       <div className='grid grid-cols-1 md:grid-cols-2 md:w-[95%] lg:w-[70%] xl:w-[50%] md:mt-10 lg:mt-20 xl:mt-30 mx-auto'>
-        {selectedFriend && <FormSplitBill selectedFriend={selectedFriend}onSplitBill={handleSplitBill} onDelete={deleteFriend}/>}
+        {selectedFriend && 
+          <FormSplitBill 
+            selectedFriend={selectedFriend} 
+            onSplitBill={handleSplitBill} 
+            onDelete={deleteFriend}
+            darkMode={darkMode}
+        />}
         <div className={` ${selectedFriend?`h-[30vh]`:(showAddFriend?`h-[100%]`:`h-[100%]`)} w-[100%] md:h-[60vh] p-2 mx-auto`}>
-          {showAddFriend && <FormAddFriend onAddFriend={addFriendFunc}/>}
+          {showAddFriend && 
+            <FormAddFriend 
+              onAddFriend={addFriendFunc}
+              darkMode={darkMode}
+            />}
           <ShowFriends 
             friends={friendList} 
             onSelection={handleSelection}
             selectedFriend={selectedFriend}
-            showAddFriend={showAddFriend} 
+            showAddFriend={showAddFriend}
+            darkMode={darkMode}
           />
         </div>
       </div>

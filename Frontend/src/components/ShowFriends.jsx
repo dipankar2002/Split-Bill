@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-export default function ShowFriends({friends, onSelection, selectedFriend, showAddFriend}) {
+export default function ShowFriends({friends, onSelection, selectedFriend, showAddFriend, darkMode}) {
 
   // const isSelect = selectedFriend?.id === friend.id;
   // ${selectedFriend?`h-[220px]`:(showAddFriend?`h-[410px]`:`h-[560px]`)}
@@ -15,17 +15,18 @@ export default function ShowFriends({friends, onSelection, selectedFriend, showA
           key={i}
           onSelection={onSelection}
           selectedFriend={selectedFriend}
+          darkMode={darkMode}
         />)}
     </ul>
   )
 }
 
-function FriendsLists({friend, onSelection, selectedFriend}) {
+function FriendsLists({friend, onSelection, selectedFriend, darkMode}) {
 
   const isSelect = selectedFriend?.id === friend.id;
   
   return (
-    <li className='grid grid-cols-[20%_60%_20%] hover:bg-[#fff4e6] w-[100%] my-2 rounded-lg p-2 items-center shadow-md'>
+    <li className={`${darkMode?`bg-stone-900`:`bg-white`} ${isSelect?`bg-[#fff4e6]`:``} grid grid-cols-[20%_60%_20%] hover:bg-[#fff4e6] w-[100%] my-2 rounded-lg p-2 items-center shadow-md`}>
       <img className='m-2 rounded-4xl'
         src={friend.image}
         alt={friend.name}
@@ -34,7 +35,7 @@ function FriendsLists({friend, onSelection, selectedFriend}) {
         <p className='text-xl font-bold'>{friend.name}</p>
         <p className={`${friend.balance!=0?friend.balance>0?`text-green-600`:`text-red-600`:null}`}>{friend.balance==0?`You and ${friend.name} is even`:friend.balance>0?`${friend.name} owes you ₹${friend.balance}`:`You owe ${friend.name} ₹${ Math.abs(friend.balance)}`}</p>
       </div>
-      <button className='bg-[#ffa94d] justify-self-end px-4 py-2 font-bold rounded-lg'
+      <button className={`${darkMode?`bg-neutral-700 text-[#ffa94d]`:``} bg-[#ffa94d] justify-self-end px-4 py-2 font-bold rounded-lg`}
         onClick={()=>onSelection(friend)}
       >{isSelect ? "Close" : "Select"}</button>
     </li>

@@ -9,3 +9,15 @@
     scrollbar-width: none;  /* Firefox */
   }
 }
+
+/* Light Mode */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Dark Mode */
+body.dark {
+  background-color: #000000;
+  color: white;
+}

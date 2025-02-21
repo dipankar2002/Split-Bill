@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function FormAddFriend({onAddFriend}) {
+export default function FormAddFriend({onAddFriend, darkMode}) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("https://i.pravatar.cc/48");
 
@@ -23,10 +23,10 @@ export default function FormAddFriend({onAddFriend}) {
   }
 
   return (
-    <form className="bg-[#fff4e6] my-4 rounded-lg text-center" onSubmit={handleSubmit}>
+    <form className={`${darkMode?`bg-stone-900`:`bg-[#fff4e6]`} my-4 rounded-lg text-center`} onSubmit={handleSubmit}>
       <div className='flex items-center justify-between px-4 py-2'>
         <label className='text-xl font-bold'>👫 Friend name</label>
-        <input className='bg-white rounded-lg text-md text-center w-[180px] h-[40px]'
+        <input className={`${darkMode?`bg-neutral-700`:`bg-white`} rounded-lg text-md text-center w-[180px] h-[40px]`}
           type="text"
           placeholder='Enter Name'
           value={name}
@@ -43,7 +43,7 @@ export default function FormAddFriend({onAddFriend}) {
         />
       </div> */}
 
-      <button className="bg-[#ffa94d] w-[80%] font-bold h-10 my-2 rounded-lg">Add Friend</button>
+      <button className={`${darkMode?`bg-neutral-700 text-[#ffa94d]`:``}bg-[#ffa94d] w-[80%] font-bold h-10 my-2 rounded-lg`}>Add Friend</button>
     </form>
   );
 }
