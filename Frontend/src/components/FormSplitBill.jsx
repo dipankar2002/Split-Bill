@@ -59,7 +59,7 @@ export default function FormSplitBill({selectedFriend, onSplitBill, onDelete, da
 
     <div className='flex justify-between items-center my-2 text-left'>
       <button className='border-2 w-[20%] font-bold h-10 my-2 rounded-lg'
-        onClick={()=>onDelete(selectedFriend.id)}
+        onClick={()=>onDelete(selectedFriend.id,selectedFriend.name)}
       >Delete</button>
       <button  onClick={handleSubmit} className={`${darkMode?`text-black`:``} bg-[#ffa94d] w-[40%] font-bold h-10 my-2 rounded-lg`}>Split Bill</button>
     </div>

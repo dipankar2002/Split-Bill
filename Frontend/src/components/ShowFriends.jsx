@@ -26,7 +26,7 @@ function FriendsLists({friend, onSelection, selectedFriend, darkMode}) {
   const isSelect = selectedFriend?.id === friend.id;
   
   return (
-    <li className={`${darkMode?`bg-stone-900`:`bg-white`} ${isSelect?`bg-[#fff4e6]`:``} grid grid-cols-[20%_60%_20%] hover:bg-[#fff4e6] w-[100%] my-2 rounded-lg p-2 items-center shadow-md`}>
+    <li className={`${darkMode?` hover:bg-neutral-600 ${isSelect?`bg-neutral-600`:`bg-stone-900`}`:` hover:bg-[#fff4e6] ${isSelect?`bg-[#fff4e6]`:`bg-white`}`} grid grid-cols-[20%_60%_20%] w-[100%] my-2 rounded-lg p-2 items-center shadow-md`}>
       <img className='m-2 rounded-4xl'
         src={friend.image}
         alt={friend.name}

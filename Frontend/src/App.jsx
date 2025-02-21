@@ -76,12 +76,14 @@ function App() {
     setSelectedFriend(null);
   }
 
-  function deleteFriend(id) {
-    setFriendList((ele)=>{
-      const newList = ele.filter((item)=>item.id !== id);
-      localStorage.setItem("list", JSON.stringify(newList));
-      return newList;
-    });
+  function deleteFriend(id,name) {
+    if(window.confirm(`Want to delete ${name}`)) {
+      setFriendList((ele)=>{
+        const newList = ele.filter((item)=>item.id !== id);
+        localStorage.setItem("list", JSON.stringify(newList));
+        return newList;
+      });
+    }
     setSelectedFriend(null);
   }
 
